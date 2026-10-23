@@ -81,3 +81,7 @@ jobs:
           SHA_TAG="${GITHUB_SHA::7}"
           docker push ${{ steps.image.outputs.dockerhub }}:latest
           docker push ${{ steps.image.outputs.dockerhub }}:$SHA_TAG
+      
+      - name: Desplegar en Render
+        run: curl -fsS "${{ secrets.RENDER_TRIGGER_URL }}"
+
